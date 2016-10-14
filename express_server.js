@@ -65,13 +65,23 @@ app.post("/urls/:shortURL/delete" , (req, res) => {
 app.post("/urls/:shortURL/update"  , (req, res)  => {
 	const theNewURL = (req.body.longURL)
 	console.log(theNewURL);
-	const theOldURL = ** urlDatabase[req.params.id] **
-	console.log(theOldURL) //Undefined 
-	// REPLACE WTFUUUUUUU  
+	const theOldURL =  urlDatabase[req.params.shortURL]
+	console.log(theOldURL)
+	urlDatabase[req.params.shortURL] = theNewURL
 	res.redirect("/urls");
 });
 
-/// Adding the new URL NOT updating
+
+app.post("/login"	, (req, res) => {
+	const username = req.params.username
+	const password = req.params.password
+	console.log(username)
+	console.log(password)
+	res.cookie("username")
+//We will just track a string value called username using a cookie. Use the endpoint to set the cookie parameter called username to the value submitted in the request body via the form. 
+
+	res.redirect("/urls")
+});
 
 
 function generateRandomString() {
