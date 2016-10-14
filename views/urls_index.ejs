@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<% include ./partials/_header %>
+ <ul>
+<% for(var url in urls) {%>
+  <li><a href="/urls/<%= url %>"><%= url %></a></li>
+  <form method="post" action="/urls/<%= url %>/delete"><button type="submit">Delete</button></form>
+<%}%>
+ </ul>
+</body>
+</html>
