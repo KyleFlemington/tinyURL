@@ -1,5 +1,7 @@
 var express = require("express");
 var app = express();
+var cookieParser = require("cookie-parser");
+app.use(cookieParser());
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
@@ -23,16 +25,6 @@ app.get("/hello", (req, res) => {
   res.end("<html><body>Hello <b>World</b></body></html>\n");
 });
 
-app.get("/urls", (req, res) => {
-  let templateVars = { urls : urlDatabase };
-  res.render("urls_index", templateVars);
-});
-
-// //let templateVars = {
-//   username: req.cookies["username"],
-//   // ... any other vars
-// };
-// res.render("index", templateVars);
 
 app.get("/urls.json", (req, res) => {
   res.json(urlDatabase);
@@ -77,14 +69,33 @@ app.post("/urls/:shortURL/update"  , (req, res)  => {
 	res.redirect("/urls");
 });
 
-
+//Login Page
 app.post("/login"	, (req, res) => {
 	const username = req.body.username
-	res.cookie("username") 
+	res.cookie("username", username) 
 	res.redirect("/urls")
 });
 
 
+app.get("/urls", (req, res) => {
+	// console.log("REQ", req.cookies);
+  let templateVars = { 
+  	urls : urlDatabase,
+   	username: req.cookies["username"], 
+  };
+  res.render("urls_index", templateVars);
+});
+
+
+
+
+//Registration Page
+app.post("/register" , (req, res) => {
+
+});
+
+
+//Registration Handler
 
 
 
