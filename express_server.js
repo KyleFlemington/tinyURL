@@ -28,6 +28,12 @@ app.get("/urls", (req, res) => {
   res.render("urls_index", templateVars);
 });
 
+// //let templateVars = {
+//   username: req.cookies["username"],
+//   // ... any other vars
+// };
+// res.render("index", templateVars);
+
 app.get("/urls.json", (req, res) => {
   res.json(urlDatabase);
 });
@@ -73,15 +79,16 @@ app.post("/urls/:shortURL/update"  , (req, res)  => {
 
 
 app.post("/login"	, (req, res) => {
-	const username = req.params.username
-	const password = req.params.password
-	console.log(username)
-	console.log(password)
-	res.cookie("username")
-//We will just track a string value called username using a cookie. Use the endpoint to set the cookie parameter called username to the value submitted in the request body via the form. 
-
+	const username = req.body.username
+	res.cookie("username") 
 	res.redirect("/urls")
 });
+
+
+
+
+
+
 
 
 function generateRandomString() {
