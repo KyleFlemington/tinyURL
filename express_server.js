@@ -47,6 +47,16 @@ app.post("/urls", (req, res) => {
   res.redirect(`/urls/${shortURL}`);         // Respond with 'Ok' (we will replace this)
 });
 
+app.get("/urls", (req, res) => {
+	// console.log("REQ", req.cookies);
+  let templateVars = { 
+  	urls : urlDatabase,
+   	username: req.cookies["username"], 
+  };
+  res.render("urls_index", templateVars);
+});
+
+
 app.get("/u/:shortURL", (req, res) => {
   let longURL = urlDatabase[req.params.shortURL]
   res.redirect(longURL);
@@ -76,15 +86,6 @@ app.post("/login"	, (req, res) => {
 	res.redirect("/urls")
 });
 
-
-app.get("/urls", (req, res) => {
-	// console.log("REQ", req.cookies);
-  let templateVars = { 
-  	urls : urlDatabase,
-   	username: req.cookies["username"], 
-  };
-  res.render("urls_index", templateVars);
-});
 
 
 //Registration Page
