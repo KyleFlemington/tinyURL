@@ -6,8 +6,9 @@
 <% for(var url in urls) {%>
   <li><a href="/urls/<%= url %>"><%= url %></a></li>
   <form method="post" action="/urls/<%= url %>/delete"><button type="submit">Delete</button></form>
-	
-<button>Update URL -- I don't work yet</button>
+   <form method="post" action="/urls/<%= url %>/update">
+   <input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px">
+   <input type="submit" value="Update URL">
 
 <%}%>
  </ul>
