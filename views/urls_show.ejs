@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-<% include partials/_header.ejs %>  
+<b><u><p align="center">URL Update</p></b></u>
 <p> <%= shortURL %> </p>
 <p>	<%= actualURL %>  </p>
 	<ul>
-	 <form method="post" action="/urls/<%= shortURL %>/update">
-
+		<form method="post" action="/urls/<%= shortURL %>/update">
+   <input type="submit" value="Update URL">	<input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px">
 
 	</ul>
 </body>

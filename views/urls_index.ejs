@@ -7,13 +7,11 @@
 <br></br>
 
 <% for(var url in urls) {%>
- <li>Short URL:<a href="/urls/<%= url %>"><%= url %></a></li>
+ <li>Short URL:<a href="/u/<%= url %>"><%= url %></a></li>
   
   <form method="post" action="/urls/<%= url %>/delete"><button type="submit">Delete</button></form>
+  <form method="get" action="/urls/<%= url %>"><button type="submit">Edit</button></form> 
 
-   <form method="post" action="/urls/<%= url %>/update">
-   <input type="submit" value="Update URL">	<input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px">
-   
    <br></br>
    <br></br>	
 
